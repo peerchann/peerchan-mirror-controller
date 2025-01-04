@@ -22,10 +22,7 @@ jobs:
         run: |
           cd source.git
           git remote set-url --push origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/peerchann/peerchan.git
-          # Fetch all updates from source
-          git fetch --all
-          git push origin --all
-          git push origin --tags
+          git push --mirror
 
       - name: Confirm success
         run: echo "Mirror operation completed successfully!"
