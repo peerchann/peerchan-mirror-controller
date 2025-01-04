@@ -1,4 +1,4 @@
-name: Mirror Public Repository
+name: Mirror Peerchan
 
 on:
   schedule:
@@ -18,12 +18,11 @@ jobs:
 
       - name: Mirror to GitHub
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_PAT }}  # Use your custom PAT
         run: |
           cd source.git
-          git remote set-url --push origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/peerchann/peerchan.git
+          git remote set-url --push origin https://x-access-token:${{ secrets.MY_PAT }}@github.com/peerchann/peerchan.git
           git push --mirror
 
       - name: Confirm success
         run: echo "Mirror operation completed successfully!"
-        
